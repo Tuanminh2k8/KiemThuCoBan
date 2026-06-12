@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>◆ CYBERPUNK MARKET DASHBOARD ◆ Enterprise Control Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-cyber.css">
+</head>
+<body class="cyberpunk-dashboard">
+    <!-- Canvas for 3D Background -->
+    <canvas id="dashboardCanvas"></canvas>
+    
+    <!-- Effects Layer -->
+    <div class="dashboard-effects">
+        <div class="glitch-overlay"></div>
+        <div class="scan-lines"></div>
+    </div>
+    
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-cyber">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">◆</div>
+                <h3>CYBER<br>MARKET</h3>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-module="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#inventory" class="nav-item" data-module="inventory">
+                    <i class="fas fa-boxes"></i>
+                    <span>Inventory</span>
+                </a>
+                <a href="#financial" class="nav-item" data-module="financial">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Financial</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-module="analytics">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#settings" class="nav-item" data-module="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator online"></div>
+                    <span>ONLINE</span>
+                </div>
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Top Header -->
+            <header class="dashboard-header glass-panel">
+                <div class="header-left">
+                    <h1 class="neon-text">[ MISSION CONTROL ]</h1>
+                    <p class="system-time" id="systemTime">--:--:-- | INITIALIZING...</p>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="search-cyber">
+                        <input type="text" placeholder="[ SEARCH SYSTEMS ]" class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="user-menu">
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <span id="userName" class="user-name">ADMIN USER</span>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Module: Dashboard Overview -->
+                <section id="dashboard-module" class="module-section" data-module-content>
+                    <!-- Real-time Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card glass-panel holographic-card">
+                            <div class="stat-header">
+                                <span class="stat-label">[ REVENUE TODAY ]</span>
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-value" id="revenueValue">12,450,000</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +15.3%
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card glass-panel holographic-card">
+                            <div class="stat-header">
+                                <span class="stat-label">[ TRANSACTIONS ]</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-value" id="transactionValue">3,847</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +8.2%
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 62%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card glass-panel holographic-card">
+                            <div class="stat-header">
+                                <span class="stat-label">[ INVENTORY STATUS ]</span>
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <div class="stat-value" id="inventoryValue">24,580</div>
+                            <div class="stat-change warning">
+                                <i class="fas fa-exclamation"></i> 145 Low Stock
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card glass-panel holographic-card">
+                            <div class="stat-header">
+                                <span class="stat-label">[ FOOT TRAFFIC ]</span>
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-value" id="footTrafficValue">12,340</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +22.1%
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 91%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts Row -->
+                    <div class="charts-row">
+                        <div class="chart-container glass-panel">
+                            <div class="chart-header">
+                                <h3>[ REVENUE TREND ]</h3>
+                                <span class="chart-period">7 DAYS</span>
+                            </div>
+                            <canvas id="revenueChart" class="chart-canvas"></canvas>
+                        </div>
+                        
+                        <div class="chart-container glass-panel">
+                            <div class="chart-header">
+                                <h3>[ CATEGORY PERFORMANCE ]</h3>
+                                <span class="chart-period">REAL-TIME</span>
+                            </div>
+                            <canvas id="categoryChart" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Alerts Panel -->
+                    <div class="alerts-panel glass-panel">
+                        <div class="alerts-header">
+                            <h3>[ CRITICAL ALERTS ]</h3>
+                            <span class="alert-count" id="alertCount">5</span>
+                        </div>
+                        <div class="alerts-list" id="alertsList">
+                            <div class="alert-item critical">
+                                <div class="alert-icon">⚠</div>
+                                <div class="alert-content">
+                                    <p class="alert-title">LOW STOCK WARNING</p>
+                                    <p class="alert-desc">145 items below minimum threshold</p>
+                                </div>
+                                <span class="alert-time">2 min ago</span>
+                            </div>
+                            <div class="alert-item warning">
+                                <div class="alert-icon">!</div>
+                                <div class="alert-content">
+                                    <p class="alert-title">SYSTEM LOAD HIGH</p>
+                                    <p class="alert-desc">CPU usage at 78%, memory at 64%</p>
+                                </div>
+                                <span class="alert-time">5 min ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Module: Inventory Grid -->
+                <section id="inventory-module" class="module-section" data-module-content>
+                    <div class="module-header glass-panel">
+                        <h2 class="neon-text">[ INVENTORY GRID ]</h2>
+                        <div class="module-controls">
+                            <input type="text" placeholder="Search SKUs..." class="search-input" data-search="products">
+                            <select class="select-cyber" data-filter="category">
+                                <option value="">All Categories</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Groceries">Groceries</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Home & Garden">Home & Garden</option>
+                                <option value="Books">Books</option>
+                                <option value="Sports">Sports</option>
+                            </select>
+                            <select class="select-cyber" data-filter="stock">
+                                <option value="">All Stock</option>
+                                <option value="in">In Stock</option>
+                                <option value="low">Low Stock</option>
+                                <option value="out">Out of Stock</option>
+                            </select>
+                            <button class="btn-cyber primary"><i class="fas fa-plus"></i> Add Item</button>
+                            <button class="btn-cyber"><i class="fas fa-download"></i> Export</button>
+                        </div>
+                    </div>
+                    
+                    <div class="inventory-container glass-panel">
+                        <table class="inventory-table">
+                            <thead>
+                                <tr>
+                                    <th>SKU</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Available</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Module: Financial Hub -->
+                <section id="financial-module" class="module-section" data-module-content>
+                    <div class="module-header glass-panel">
+                        <h2 class="neon-text">[ FINANCIAL HUB ]</h2>
+                        <div class="module-controls">
+                            <select class="select-cyber">
+                                <option>All Transactions</option>
+                                <option>Today</option>
+                                <option>This Week</option>
+                                <option>This Month</option>
+                            </select>
+                            <button class="btn-cyber primary"><i class="fas fa-receipt"></i> Generate Invoice</button>
+                        </div>
+                    </div>
+                    
+                    <div class="financial-grid">
+                        <div class="financial-card glass-panel">
+                            <h4>Total Revenue</h4>
+                            <p class="financial-value">450,250,000 VNĐ</p>
+                            <p class="financial-desc">+12.5% vs last month</p>
+                        </div>
+                        <div class="financial-card glass-panel">
+                            <h4>Total Expenses</h4>
+                            <p class="financial-value">180,450,000 VNĐ</p>
+                            <p class="financial-desc">+3.2% vs last month</p>
+                        </div>
+                        <div class="financial-card glass-panel">
+                            <h4>Net Profit</h4>
+                            <p class="financial-value">269,800,000 VNĐ</p>
+                            <p class="financial-desc">+18.1% vs last month</p>
+                        </div>
+                        <div class="financial-card glass-panel">
+                            <h4>Tax Payable</h4>
+                            <p class="financial-value">53,960,000 VNĐ</p>
+                            <p class="financial-desc">20% of profit</p>
+                        </div>
+                    </div>
+                    
+                    <div class="transactions-panel glass-panel">
+                        <h3>[ RECENT TRANSACTIONS ]</h3>
+                        <table class="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Module: Analytics -->
+                <section id="analytics-module" class="module-section" data-module-content>
+                    <div class="module-header glass-panel">
+                        <h2 class="neon-text">[ ADVANCED ANALYTICS ]</h2>
+                        <div class="module-controls">
+                            <select class="select-cyber">
+                                <option>7 Days</option>
+                                <option>30 Days</option>
+                                <option>90 Days</option>
+                            </select>
+                            <button class="btn-cyber primary"><i class="fas fa-download"></i> Export Report</button>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-grid">
+                        <div class="chart-container glass-panel">
+                            <div class="chart-header">
+                                <h3>[ REVENUE ANALYTICS ]</h3>
+                            </div>
+                            <canvas id="analyticsRevenueChart" class="chart-canvas"></canvas>
+                        </div>
+                        
+                        <div class="chart-container glass-panel">
+                            <div class="chart-header">
+                                <h3>[ CATEGORY BREAKDOWN ]</h3>
+                            </div>
+                            <canvas id="analyticsCategoryChart" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="trends-panel glass-panel">
+                        <h3>[ MARKET TRENDS ]</h3>
+                        <div class="trends-container" data-trends>
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Module: Settings -->
+                <section id="settings-module" class="module-section" data-module-content>
+                    <div class="module-header glass-panel">
+                        <h2 class="neon-text">[ SYSTEM SETTINGS ]</h2>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-panel glass-panel">
+                            <h3>[ USER PREFERENCES ]</h3>
+                            <div class="settings-group">
+                                <label class="settings-label">
+                                    <input type="checkbox" checked>
+                                    <span>Real-time Notifications</span>
+                                </label>
+                                <label class="settings-label">
+                                    <input type="checkbox" checked>
+                                    <span>Email Alerts</span>
+                                </label>
+                                <label class="settings-label">
+                                    <input type="checkbox">
+                                    <span>SMS Notifications</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-panel glass-panel">
+                            <h3>[ SYSTEM INFO ]</h3>
+                            <div class="system-info">
+                                <p><strong>System Version:</strong> <span id="sysVersion">1.0.0</span></p>
+                                <p><strong>Database:</strong> <span>Connected</span></p>
+                                <p><strong>API Status:</strong> <span class="status-online">Online</span></p>
+                                <p><strong>Cache:</strong> <span id="cacheStatus">2.3 GB</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for Confirmations -->
+    <div id="dashboardModal" class="cyber-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="btn-cyber secondary" onclick="this.closest('.cyber-modal').classList.remove('active')">[ CANCEL ]</button>
+                <button class="btn-cyber primary" id="modalConfirm">[ CONFIRM ]</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Core Modules -->
+    <script src="modules/observability.js"></script>
+    <script src="modules/data-models.js"></script>
+    <script src="modules/inventory-manager.js"></script>
+    <script src="modules/financial-hub.js"></script>
+    <script src="modules/analytics.js"></script>
+    
+    <!-- Main Dashboard Script -->
+    <script src="dashboard-cyber.js"></script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cyberpunk Supermarket Management System">
+    <title>◆ CYBERPUNK MARKET ◆ Hệ Thống Quản Lý Siêu Thị 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="login-cyber.css">
+</head>
+<body class="cyberpunk-body">
+    <!-- Canvas for Three.js 3D Background -->
+    <canvas id="canvas3d"></canvas>
+    
+    <!-- Glitch Overlay -->
+    <div class="glitch-overlay"></div>
+    
+    <!-- Scanning Lines Animation -->
+    <div class="scan-lines"></div>
+    
+    <!-- Main Container -->
+    <div class="cyber-container">
+        <!-- Left: 3D Showcase Panel (Glassmorphism) -->
+        <div class="showcase-panel glass-panel">
+            <div class="showcase-content">
+                <div class="cyber-logo">
+                    <div class="logo-box glitch" data-text="◆">◆</div>
+                    <h1 class="logo-title">CYBERPUNK<br>MARKET</h1>
+                </div>
+                
+                <div class="features-list">
+                    <div class="feature-item neon-border">
+                        <div class="feature-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>3D INVENTORY</h4>
+                            <p>Quản lý hàng hóa trong không gian 3D tương tác</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item neon-border">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>NEURAL SYNC</h4>
+                            <p>Đồng bộ dữ liệu real-time qua mạng toàn cầu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item neon-border">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>AI ANALYTICS</h4>
+                            <p>Phân tích thông minh tự động với machine learning</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item neon-border">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>QUANTUM SECURE</h4>
+                            <p>Bảo mật lượng tử cấp enterprise</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="matrix-text">
+                    <p>████████ SYSTEM ONLINE ████████</p>
+                    <p>STATUS: READY FOR AUTHENTICATION</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right: Auth Panel -->
+        <div class="auth-panel glass-panel">
+            <div class="auth-wrapper">
+                <!-- Holographic Header -->
+                <div class="auth-header">
+                    <h2 class="auth-title neon-text" id="authTitle">[ ACCESS GRANTED ]</h2>
+                    <div class="header-underline"></div>
+                    <button class="theme-toggle-cyber" id="themeToggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <!-- Tab Navigation with Neon Effect -->
+                <div class="cyber-tabs">
+                    <button class="cyber-tab active neon-glow" data-tab="login">
+                        <span class="tab-icon">◆</span>
+                        <span class="tab-label">LOGIN</span>
+                    </button>
+                    <button class="cyber-tab neon-glow" data-tab="register">
+                        <span class="tab-icon">◇</span>
+                        <span class="tab-label">REGISTER</span>
+                    </button>
+                    <button class="cyber-tab neon-glow" data-tab="forgot">
+                        <span class="tab-icon">◈</span>
+                        <span class="tab-label">RESET</span>
+                    </button>
+                    <div class="cyber-tab-indicator"></div>
+                </div>
+                
+                <!-- Login Form -->
+                <div class="tab-content active" id="login-tab">
+                    <form class="cyber-form" id="loginForm" novalidate>
+                        <div class="form-group">
+                            <label class="cyber-label">[ USERNAME ]</label>
+                            <div class="input-group">
+                                <input type="text" name="username" placeholder=">_ ENTER CREDENTIALS" 
+                                       class="cyber-input" id="login-username" required>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="cyber-label">[ PASSWORD ]</label>
+                            <div class="input-group">
+                                <input type="password" name="password" placeholder=">_ ••••••••" 
+                                       class="cyber-input" id="login-password" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <div class="cyber-options">
+                            <label class="cyber-checkbox">
+                                <input type="checkbox" name="remember">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">Remember Session</span>
+                            </label>
+                            <a href="#forgot" class="neon-link">Forgot Access?</a>
+                        </div>
+                        
+                        <button type="submit" class="cyber-btn primary-btn">
+                            <span class="btn-text">[ AUTHENTICATE ]</span>
+                            <span class="btn-glow"></span>
+                        </button>
+                        
+                        <p class="message" id="loginMessage"></p>
+                    </form>
+                    
+                    <div class="cyber-divider">[ OR ]</div>
+                    
+                    <div class="social-cyber">
+                        <button class="social-cyber-btn" title="Neural Link - Google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button class="social-cyber-btn" title="Quantum Entangle - Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </button>
+                        <button class="social-cyber-btn" title="System Sync - GitHub">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="cyber-info">
+                        <div class="info-header">
+                            <i class="fas fa-info-circle"></i>
+                            <span>DEMO ACCESS</span>
+                        </div>
+                        <div class="info-content">
+                            <p><strong>admin</strong> / <strong>123456</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Register Form -->
+                <div class="tab-content" id="register-tab">
+                    <form class="cyber-form" id="registerForm" novalidate>
+                        <div class="form-group">
+                            <label class="cyber-label">[ FULL NAME ]</label>
+                            <div class="input-group">
+                                <input type="text" name="fullname" placeholder=">_ NAME" 
+                                       class="cyber-input" required>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="cyber-label">[ EMAIL ]</label>
+                            <div class="input-group">
+                                <input type="email" name="email" placeholder=">_ EMAIL@SYSTEM.COM" 
+                                       class="cyber-input" required>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="cyber-label">[ USERNAME ]</label>
+                            <div class="input-group">
+                                <input type="text" name="username" placeholder=">_ USERNAME" 
+                                       class="cyber-input" required>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="cyber-label">[ PASSWORD ]</label>
+                            <div class="input-group">
+                                <input type="password" name="password" placeholder=">_ MIN 8 CHARS" 
+                                       class="cyber-input" id="reg-password" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <div class="input-border"></div>
+                            </div>
+                            <div class="strength-meter">
+                                <div class="strength-bar"></div>
+                                <span class="strength-text">WEAK</span>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="cyber-label">[ CONFIRM ]</label>
+                            <div class="input-group">
+                                <input type="password" name="confirmPassword" placeholder=">_ RETYPE" 
+                                       class="cyber-input" required>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <label class="cyber-checkbox-full">
+                            <input type="checkbox" name="agreeTerms" required>
+                            <span class="checkbox-custom"></span>
+                            <span>I AGREE TO <a href="#" class="neon-link">TERMS & CONDITIONS</a></span>
+                        </label>
+                        
+                        <button type="submit" class="cyber-btn primary-btn">
+                            <span class="btn-text">[ INITIALIZE ]</span>
+                            <span class="btn-glow"></span>
+                        </button>
+                        
+                        <p class="message" id="registerMessage"></p>
+                    </form>
+                </div>
+                
+                <!-- Forgot Password Form -->
+                <div class="tab-content" id="forgot-tab">
+                    <form class="cyber-form" id="forgotForm" novalidate>
+                        <p class="form-description">
+                            [ ENTER YOUR EMAIL OR USERNAME TO RESET ]
+                        </p>
+                        
+                        <div class="form-group">
+                            <label class="cyber-label">[ IDENTITY ]</label>
+                            <div class="input-group">
+                                <input type="text" name="email" placeholder=">_ EMAIL OR USERNAME" 
+                                       class="cyber-input" required>
+                                <div class="input-border"></div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        
+                        <button type="submit" class="cyber-btn primary-btn">
+                            <span class="btn-text">[ SEND RESET LINK ]</span>
+                            <span class="btn-glow"></span>
+                        </button>
+                        
+                        <p class="message" id="forgotMessage"></p>
+                    </form>
+                </div>
+                
+                <!-- Footer -->
+                <div class="cyber-footer">
+                    <p id="footerText">[ NO ACCOUNT? <a href="#register" class="neon-link">REGISTER NOW</a> ]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <!-- Modal -->
+    <div id="confirmModal" class="cyber-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="neon-text"></h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalCancel" class="cyber-btn secondary-btn">[ CANCEL ]</button>
+                <button id="modalConfirm" class="cyber-btn primary-btn">[ CONFIRM ]</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="login-cyber.js"></script>
+</body>
+</html>
