@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Doanh Số - Quản lý Siêu thị</title>
+    <link rel="stylesheet" href="doanhso.css">
+</head>
+<body>
+    <header>
+        <h1>📈 Báo cáo Doanh Số</h1>
+        <button class="back-btn" onclick="window.location.href='../main/index.html'">⬅️ Quay về Trang chủ</button>
+    </header>
+
+    <main>
+        <section class="report">
+            <h2>Tổng quan doanh thu</h2>
+            <div class="report-grid">
+                <div class="report-card">
+                    <h3>Doanh thu hôm nay</h3>
+                    <p id="todayRevenue">45.2 Triệu VNĐ</p>
+                </div>
+                <div class="report-card">
+                    <h3>Doanh thu tháng này</h3>
+                    <p id="monthRevenue">1.25 Tỷ VNĐ</p>
+                </div>
+                <div class="report-card">
+                    <h3>Doanh thu năm nay</h3>
+                    <p id="yearRevenue">12.8 Tỷ VNĐ</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chart">
+            <h2>Biểu đồ doanh thu theo ngày</h2>
+            <canvas id="revenueChart"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Quản lý Siêu thị - Nhóm 1</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="doanhso.js"></script>
+</body>
+</html>

@@ -246,7 +246,7 @@ main > section h2 {
     gap: 20px;
 }
 
-.stat-card {
+.stat-card_doanhso, .stat-card_giaodich, .stat-card_khachhang, .stat-card_tonkho {
     background: linear-gradient(135deg, #f11d1d 0%, #d91e1e 100%);
     color: white;
     padding: 30px;
@@ -256,7 +256,7 @@ main > section h2 {
     transition: all 0.3s ease;
 }
 
-.stat-card:hover {
+.stat-card_doanhso:hover, .stat-card_giaodich:hover, .stat-card_khachhang:hover, .stat-card_tonkho:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(241, 29, 29, 0.3);
 }

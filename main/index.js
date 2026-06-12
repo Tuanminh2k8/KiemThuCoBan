@@ -114,3 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.opacity = '1';
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const doanhSoCard = document.querySelector('.stat-card_doanhso');
+    doanhSoCard.addEventListener('click', () => {
+        window.location.href = '../thongke/doanhso.html';
+    });
+});
+
