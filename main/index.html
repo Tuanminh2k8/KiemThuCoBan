@@ -3,64 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý Siêu thị</title>
+    <title>Quản lý Siêu thị - Trang Chủ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1> Quản lý Siêu thị</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
-                <li><a href="#">Khách hàng</a></li>
-                <li><a href="#">Nhân viên</a></li>
-                <li><a href="#">Nhà cung cấp</a></li>
-                <li><a href="#">Hóa đơn</a></li>
-                <li><a href="#">Thống kê</a></li>
-            </ul>
-        </nav>
-        <button class="login-btn">Login</button>
+        <div class="header-top">
+            <div class="logo">
+                <h1>🏪 QUẢN LÝ SIÊU THỊ</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#home" class="active">Trang chủ</a></li>
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#customers">Khách hàng</a></li>
+                    <li><a href="#staff">Nhân viên</a></li>
+                    <li><a href="#suppliers">Nhà cung cấp</a></li>
+                    <li><a href="#statistics">Thống kê</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <span class="user-info" id="userInfo"></span>
+                <button class="logout-btn" id="logoutBtn">Đăng Xuất</button>
+            </div>
+        </div>
     </header>
 
+    <!-- Banner/Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Chào mừng đến với hệ thống quản lý siêu thị hiện đại</h2>
+            <p>Quản lý hiệu quả, phục vụ tốt hơn</p>
+            <div class="search-bar">
+                <input type="text" placeholder="🔍 Tìm kiếm sản phẩm..." id="searchInput">
+                <button id="searchBtn">Tìm kiếm</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section -->
     <main>
-        <section class="intro">
-            <h2>Chào mừng đến với hệ thống quản lý siêu thị</h2>
+        <section class="categories" id="products">
+            <h2>Danh Mục Sản Phẩm</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="thuc-pham">
+                    <div class="category-icon">🍎</div>
+                    <h3>Thực Phẩm Tươi</h3>
+                    <p>Rau, quả, thịt cá tươi</p>
+                </div>
+                <div class="category-card" data-category="dien-may">
+                    <div class="category-icon">📱</div>
+                    <h3>Điện Máy</h3>
+                    <p>Điện thoại, laptop, TV</p>
+                </div>
+                <div class="category-card" data-category="thoi-trang">
+                    <div class="category-icon">👗</div>
+                    <h3>Thời Trang</h3>
+                    <p>Quần áo, giày dép, phụ kiện</p>
+                </div>
+                <div class="category-card" data-category="nha-cua">
+                    <div class="category-icon">🏠</div>
+                    <h3>Nhà Cửa</h3>
+                    <p>Nội thất, đồ dùng nhà bếp</p>
+                </div>
+                <div class="category-card" data-category="sach">
+                    <div class="category-icon">📚</div>
+                    <h3>Sách & Văn Phòng</h3>
+                    <p>Sách, tập, bút, vật dụng VP</p>
+                </div>
+                <div class="category-card" data-category="me-be">
+                    <div class="category-icon">👶</div>
+                    <h3>Mẹ & Bé</h3>
+                    <p>Sữa, tã, quần áo trẻ em</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="statistics" id="statistics">
+            <h2>Thống Kê Hôm Nay</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <h4>Doanh Số</h4>
+                    <p class="stat-value">45.2 Triệu VNĐ</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛒</div>
+                    <h4>Giao Dịch</h4>
+                    <p class="stat-value">1,230</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <h4>Khách Hàng</h4>
+                    <p class="stat-value">8,456</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <h4>Tồn Kho</h4>
+                    <p class="stat-value">5,890 SKU</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <h2>Sản Phẩm Nổi Bật</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🎁</div>
+                    <h4>Sản phẩm 1</h4>
+                    <p class="price">199.000 VNĐ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🎁</div>
+                    <h4>Sản phẩm 2</h4>
+                    <p class="price">299.000 VNĐ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🎁</div>
+                    <h4>Sản phẩm 3</h4>
+                    <p class="price">149.000 VNĐ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🎁</div>
+                    <h4>Sản phẩm 4</h4>
+                    <p class="price">399.000 VNĐ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+            </div>
         </section>
     </main>
-        <div class="danh_muc">
-            <div class="danh_muc_item">
-                <img src="" alt="Sản phẩm">
-                <h3>Sản phẩm</h3>
-                
-            </div>
-            <div class="danh_muc_item">
-                <img src="" alt="Sản phẩm">
-                <h3>Sản phẩm</h3>
-            </div>
-            <div class="danh_muc_item">
-                <img src="" alt="Sản phẩm">
-                <h3>Sản phẩm</h3>
-            </div>
-            <div class="danh_muc_item">
-                <img src="" alt="Sản phẩm">
-                <h3>Sản phẩm</h3>
-            </div>
-            <div class="danh_muc_item">
-                <img src="" alt="Sản phẩm">
-                <h3>Sản phẩm</h3>
-            </div>
-            <div class="dan" alt="Sản phẩm">
-                <h3>Sản phẩm</h3>
-            </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Về Chúng Tôi</h4>
+                <p>Hệ thống quản lý siêu thị hiện đại giúp quản lý bán hàng hiệu quả.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liên Hệ</h4>
+                <p>📞 1900-1234-5678<br>📧 support@supermarket.vn<br>📍 123 Đường ABC, TP. HCM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Giờ Hoạt Động</h4>
+                <p>Thứ 2 - Thứ 6: 8:00 - 21:00<br>Thứ 7: 9:00 - 22:00<br>Chủ nhật: 9:00 - 21:00</p>
+            </div>
         </div>
-        <div class="banner">
-            <img src="" alt="Banner Siêu thị"> 
-            <img src="" alt="Banner Siêu thị">
-            <img src="" alt="Banner Siêu thị">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Quản Lý Siêu Thị. All Rights Reserved.</p>
         </div>
+    </footer>
 
+    <script src="index.js"></script>
 </body>
 </html>

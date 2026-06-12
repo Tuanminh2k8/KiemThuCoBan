@@ -1,13 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng nhập - Quản lý Siêu thị</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="login.css">
-    <script src="login.js"></script>
 </head>
 <body>
-    <div class=""></div>
+    <!-- Decorative Background -->
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-wrapper">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="logo-icon">🏪</div>
+                <h1>SUPERMARKET</h1>
+                <p>Hệ thống quản lý siêu thị</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-container">
+                <button class="tab-btn active" data-tab="login">
+                    <i class="fas fa-sign-in-alt"></i> Đăng Nhập
+                </button>
+                <button class="tab-btn" data-tab="register">
+                    <i class="fas fa-user-plus"></i> Đăng Ký
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <div class="tab-content active" id="login-tab">
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="login-username">
+                            <i class="fas fa-user"></i> Tên đăng nhập
+                        </label>
+                        <input type="text" id="login-username" name="username" placeholder="Nhập tên đăng nhập" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">
+                            <i class="fas fa-lock"></i> Mật khẩu
+                        </label>
+                        <input type="password" id="login-password" name="password" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Ghi nhớ tôi</label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Đăng Nhập</button>
+                    
+                    <p class="message" id="loginMessage"></p>
+                </form>
+                
+                <div class="info-box">
+                    <p><strong>📌 Tài khoản demo:</strong></p>
+                    <p>Username: <code>admin</code></p>
+                    <p>Password: <code>123456</code></p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div class="tab-content" id="register-tab">
+                <form class="auth-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="reg-fullname">
+                            <i class="fas fa-id-card"></i> Họ và tên
+                        </label>
+                        <input type="text" id="reg-fullname" name="fullname" placeholder="Nhập họ và tên" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="reg-email" name="email" placeholder="Nhập email của bạn" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-username">
+                            <i class="fas fa-user"></i> Tên đăng nhập
+                        </label>
+                        <input type="text" id="reg-username" name="username" placeholder="Chọn tên đăng nhập" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-password">
+                            <i class="fas fa-lock"></i> Mật khẩu
+                        </label>
+                        <input type="password" id="reg-password" name="password" placeholder="Tối thiểu 6 ký tự" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-confirm-password">
+                            <i class="fas fa-lock"></i> Xác nhận mật khẩu
+                        </label>
+                        <input type="password" id="reg-confirm-password" name="confirmPassword" placeholder="Nhập lại mật khẩu" required>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="agree-terms" name="agreeTerms" required>
+                        <label for="agree-terms">Tôi đồng ý với điều khoản dịch vụ</label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Đăng Ký</button>
+                    
+                    <p class="message" id="registerMessage"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="login.js"></script>
 </body>
 </html>
