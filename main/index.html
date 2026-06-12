@@ -10,10 +10,17 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-top">
-            <div class="logo">
-                <h1>🏪 QUẢN LÝ SIÊU THỊ</h1>
+        <div class="header-container">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="logo-icon">📋</div>
+                <div class="logo-text">
+                    <h1>QUẢN LÝ SIÊU THỊ</h1>
+                    <span class="logo-subtitle">Hệ thống quản lý hiện đại</span>
+                </div>
             </div>
+
+            <!-- Navigation -->
             <nav class="navbar">
                 <ul>
                     <li><a href="#home" class="active">Trang chủ</a></li>
@@ -24,9 +31,16 @@
                     <li><a href="#statistics">Thống kê</a></li>
                 </ul>
             </nav>
+
+            <!-- User Actions -->
             <div class="header-actions">
-                <span class="user-info" id="userInfo"></span>
-                <button class="logout-btn" id="logoutBtn">Đăng Xuất</button>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="user-info" id="userInfo"></span>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Đăng Xuất
+                </button>
             </div>
         </div>
     </header>
